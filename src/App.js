@@ -1,5 +1,4 @@
 import React from 'react';
-import { selectUser, login } from './features/userSlice';
 import './App.css';
 import WebcamCapture from './components/WebcamCapture/WebcamCapture';
 import {

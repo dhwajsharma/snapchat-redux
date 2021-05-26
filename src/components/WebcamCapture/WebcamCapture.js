@@ -15,7 +15,7 @@ const videoConstraints = {
 
 const WebcamCapture = () => {
     const webcamRef = useRef(null);
-    const dispatch = useDispatch(null);
+    const dispatch = useDispatch();
     const history = useHistory();
 
     const capture = useCallback(() => {
@@ -23,7 +23,7 @@ const WebcamCapture = () => {
         dispatch(setCameraImage(imageSrc));
         history.push("/preview");
 
-    }, [webcamRef, history]);
+    }, [webcamRef]);
 
     return (
         <div className="webcamCapture">
