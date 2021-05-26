@@ -23,7 +23,7 @@ const WebcamCapture = () => {
         dispatch(setCameraImage(imageSrc));
         history.push("/preview");
 
-    }, [webcamRef]);
+    }, [webcamRef, history]);
 
     return (
         <div className="webcamCapture">
