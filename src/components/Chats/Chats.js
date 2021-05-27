@@ -1,7 +1,8 @@
 import { Avatar } from '@material-ui/core'
-import { Chat, ChatBubble, Search } from '@material-ui/icons'
+import { ChatBubble, Search } from '@material-ui/icons'
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase'
+import Chat from '../Chat/Chat'
 import "./Chats.css"
 
 const Chats = () => {
@@ -26,7 +27,7 @@ const Chats = () => {
             </div>
 
             <div className="chats_posts">
-                {posts.map(({ id, data: { profilePic, username, timestamp, imageUrl, read } }) => (
+                {posts.map(({ id, data: { profilePic, username, timestamp, imageUrl, read }, }) => (
                     <Chat
                         key={id}
                         id={id}
