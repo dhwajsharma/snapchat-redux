@@ -7,11 +7,13 @@ import { AttachFile, Close, Create, Crop, MusicNote, Note, Send, TextFields, Tim
 import { v4 as uuid } from "uuid";
 import { db, storage } from "../../firebase"
 import firebase from "firebase";
+import { selectUser } from "../../features/appSlice";
 
 const Preview = () => {
     const cameraImage = useSelector(selectCameraImage);
     const history = useHistory();
     const dispatch = useDispatch()
+    const user = useSelector(selectUser);
 
     useEffect(() => {
         if (!cameraImage) {
@@ -40,6 +42,7 @@ const Preview = () => {
                         imageUrl: url,
                         username: "Dhwaj",
                         read: false,
+                        profilePic: user.profilePic,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     })
                     history.replace("/chats");
