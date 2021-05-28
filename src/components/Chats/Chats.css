@@ -16,6 +16,16 @@
   transform: translate(-50%, -50%);
 }
 
+.chats_searchIcon {
+  color: white;
+  font-size: 13px !important;
+}
+
+.chats_chatIcon {
+  color: white;
+  font-size: 18px !important;
+}
+
 .chats_takePicIcon:hover {
   opacity: 0.8;
 }
@@ -47,6 +57,7 @@
 .chats_avatar {
   height: 25px !important;
   width: 25px !important;
+  cursor: pointer;
 }
 
 .chats_search {

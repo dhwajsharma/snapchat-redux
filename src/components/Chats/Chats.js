@@ -30,7 +30,7 @@ const Chats = () => {
             <div className="chats_header">
                 <Avatar src={user.profilePic} onClick={() => auth.signOut()} className="chats_avatar" />
                 <div className="chats_search">
-                    <Search />
+                    <Search className="chats_searchIcon" />
                     <input placeholder="Friends" type="text" />
                 </div>
                 <ChatBubble className="chats_chatIcon" />
