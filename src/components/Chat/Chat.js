@@ -3,14 +3,14 @@ import { StopRounded } from '@material-ui/icons'
 import React from 'react'
 import ReactTimeago from 'react-timeago'
 import "./Chat.css"
-import { selectImage } from "../../features/appSlice"
-import { useDispatch } from 'react-redux'
+import { selectImage, selectUser } from "../../features/appSlice"
+import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../../firebase'
 import { useHistory } from 'react-router'
 
 const Chat = ({ id, username, timestamp, read, imageUrl, profilePic }) => {
     const dispatch = useDispatch();
-
+    const user = useSelector(selectUser);
     const history = useHistory();
 
     const open = () => {
@@ -26,7 +26,7 @@ const Chat = ({ id, username, timestamp, read, imageUrl, profilePic }) => {
 
     return (
         <div onClick={open} className="chat">
-            <Avatar className="chat_avatar" src={profilePic} />
+            <Avatar className="chat_avatar" src={user.profilePic} />
             <div className="chat_info">
                 <h4>{username}</h4>
                 <p>{!read && "Tap to view -"} < ReactTimeago date={new Date(timestamp?.toDate()).toUTCString()} /></p>

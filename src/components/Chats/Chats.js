@@ -1,7 +1,8 @@
 import { Avatar } from '@material-ui/core'
-import { ChatBubble, Search } from '@material-ui/icons'
+import { ChatBubble, RadioButtonUnchecked, Search } from '@material-ui/icons'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
 import { selectUser } from '../../features/appSlice'
 import { auth, db } from '../../firebase'
 import Chat from '../Chat/Chat'
@@ -10,13 +11,19 @@ import "./Chats.css"
 const Chats = () => {
     const [posts, setPosts] = useState([]);
     const user = useSelector(selectUser);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         db.collection("posts").orderBy("timestamp", "desc").onSnapshot(snapshot => setPosts(snapshot.docs.map(doc => ({
             id: doc.id,
             data: doc.data()
         }))))
-    }, [])
+    }, []);
+
+    const takeSnap = () => {
+        history.push("/");
+    }
 
     return (
         <div className="chats">
@@ -42,6 +49,8 @@ const Chats = () => {
                     />
                 ))}
             </div>
+
+            <RadioButtonUnchecked onClick={takeSnap} className="chats_takePicIcon" fontSize="large" />
         </div>
     )
 }
